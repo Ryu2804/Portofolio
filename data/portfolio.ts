@@ -4,9 +4,7 @@ export interface Project {
   id: string;
   stage: string;
   category: ProjectCategory;
-  categoryLabel: string;
   score: string;
-  romId: string;
   title: string;
   description: string;
   year: string;
@@ -23,12 +21,6 @@ export interface Project {
 export const PROFILE = {
   name: "Benedictus Ryu Gunawan",
   major: "Artificial Intelligence Engineering",
-  role: "LEAD CREATIVE OPERATOR",
-  rank: "Artificial Intelligence Researcher",
-  bio: "Equipped with 9+ years crafting tactile visual identities, high-impact poster systems, and retro-futurist interfaces for pioneering creators.",
-  projectsCompleted: "142 STAGES",
-  hiScore: "999,990 PTS",
-  status: "OPEN FOR CONTRACT",
   email: "benedictusryugunawan@gmail.com",
   githubUsername: "Ryu2804", 
   instagram: "https://www.instagram.com/benedictus.ryu/",
@@ -41,9 +33,7 @@ export const PROJECTS: Project[] = [
     id: "garden-bunga",
     stage: "STAGE 01 • SPEECH AI",
     category: "MACHINE LEARNING",
-    categoryLabel: "SPEECH SYNTHESIS",
     score: "Best Implementation",
-    romId: "#001-TTS",
     title: "GARDEN BUNGA",
     description:
       "An efficient hybrid sequence modeling system for Indonesian speech synthesis using multilingual knowledge transfer.",
@@ -59,9 +49,7 @@ export const PROJECTS: Project[] = [
     id: "SiLaju",
     stage: "STAGE 02 • COMPUTER VISION",
     category: "SOFTWARE ENGINEERING",
-    categoryLabel: "VISION & GNN",
     score: "Third Place",
-    romId: "#002-RDM",
     title: "SiLaju - Sistem Pelaporan Jalan Umum",
     description:
       "A ResNet-based road damage classification system combined with a Graph Neural Network to prioritize efficient road maintenance.",
@@ -77,9 +65,7 @@ export const PROJECTS: Project[] = [
     id: "post-disaster-segmentation",
     stage: "STAGE 03 • DISASTER AI",
     category: "MACHINE LEARNING",
-    categoryLabel: "SELF-SUPERVISED VISION",
     score: "Second Place",
-    romId: "#003-SSL",
     title: "POST-DISASTER SEGMENTATION",
     description:
       "A Siamese self-supervised learning model for segmenting damaged areas after disasters, evaluated against the xBD paper baseline.",
@@ -95,9 +81,7 @@ export const PROJECTS: Project[] = [
     id: "SiTukang",
     stage: "STAGE 04 • GENERATIVE AI",
     category: "SOFTWARE ENGINEERING",
-    categoryLabel: "MOBILE RAG",
     score: "Third Place",
-    romId: "#004-RAG",
     title: "SiTukang - Sistem Pemesanan Tukang",
     description:
       "A low-latency Retrieval-Augmented Generation pipeline integrated into a mobile application to support customer-worker peer-to-peer interactions.",

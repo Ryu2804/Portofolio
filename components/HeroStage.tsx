@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { PROFILE } from "@/data/portfolio";
 
 export function HeroStage() {
   const [romState, setRomState] = useState("idle");
@@ -59,24 +58,12 @@ export function HeroStage() {
   }, []);
 
   function handleResume() {
-    const content = [
-      "ALEX_RAY_GRAPHIC_DESIGN_2025.ROM",
-      "==============================",
-      `OPERATOR: ${PROFILE.name} — ${PROFILE.role}`,
-      `RANK: ${PROFILE.rank}`,
-      `HI-SCORE: ${PROFILE.hiScore}`,
-      "ARSENAL: ART DIRECTION / EDITORIAL / PACKAGING / TYPE / HUD",
-      "STATUS: OPEN FOR CONTRACT",
-      `CONTACT: ${PROFILE.email}`,
-    ].join("\n");
-
-    const blob = new Blob([content], { type: "text/plain" });
-    const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
-    a.href = url;
-    a.download = "Alex_Ray_Graphic_Design_2025.rom.txt";
+    a.href = "/CV.pdf";
+    a.download = "Benedictus_Ryu_Gunawan_CV.pdf";
+    document.body.appendChild(a);
     a.click();
-    URL.revokeObjectURL(url);
+    a.remove();
     setRomState("loaded");
     window.setTimeout(() => setRomState("idle"), 2400);
   }
