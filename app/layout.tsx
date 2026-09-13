@@ -21,7 +21,7 @@ const courierPrime = Courier_Prime({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio // 2025 — Graphic Design Subsystem",
+  title: "Benedictus Ryu Gunawan",
   description:
     "Arcade CRT portfolio: brand identity, packaging, poster art, and retro-futurist interfaces. Press start to explore the cartridge archives.",
 };
