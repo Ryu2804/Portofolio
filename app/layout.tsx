@@ -16,7 +16,7 @@ const spaceMono = Space_Mono({
 
 // Only the Hanzi actually rendered on the page, so the CJK font stays tiny.
 // Add new characters here when you add them to a component.
-const HANZI = "馬福隆投幣開始歡迎光臨檔案卡帶聯絡";
+const HANZI = "馬福隆學而不厭誨人不倦檔案卡帶聯絡";
 
 export const metadata: Metadata = {
   title: "Benedictus Ryu Gunawan",

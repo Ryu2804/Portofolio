@@ -27,7 +27,6 @@ export const PROFILE = {
   linkedin: "https://www.linkedin.com/in/benedictus-ryu-gunawan-644238374/",
   kaggle: "https://www.kaggle.com/benedictusryugunawan",
   location: "Surabaya, Indonesia",
-  bio: "I am an Artificial Intelligence Engineering student at Sepuluh Nopember Institute of Technology (ITS) with a deep passion for Data Science, Machine Learning, and backend development. With an in-depth understanding of ML and a background in competitive programming, I thrive on sharpening my analytical and problem-solving skills. I learn fast, adapt quickly to new technologies, and am committed to continuous growth in the tech ecosystem.",
 } as const;
 
 export const PROJECTS: Project[] = [
@@ -56,7 +55,7 @@ export const PROJECTS: Project[] = [
     description:
       "A ResNet-based road damage classification system combined with a Graph Neural Network to prioritize efficient road maintenance.",
     year: "2026",
-    client: "DINACOM 11.0",
+    client: "DINACOM 11.0 (1st in qualifiers)",
     icon: "add_road",
     coverGradient: "from-[#f2765e] via-[#c9533d] to-[#413333]",
     badgeClass: "bg-secondary text-on-secondary",
@@ -94,6 +93,22 @@ export const PROJECTS: Project[] = [
     badgeClass: "bg-primary-container text-on-primary-container",
     image: "/projects/SiTukang.png",
     caseUrl: "https://github.com/orgs/UCGW-Hackathon/repositories",
+  },
+  {
+    id: "indfood-clustering",
+    stage: "STAGE 05 • REPRESENTATION LEARNING",
+    category: "MACHINE LEARNING",
+    score: "Best Implementation",
+    title: "INDFOOD CLUSTERING",
+    description:
+      "Unsupervised clustering of 15 Indonesian local dishes with DINO features, UMAP, and K-Means: silhouette 0.6714, Davies-Bouldin 0.4707, trustworthiness 0.9639.",
+    year: "2026",
+    client: "Lab Based Education, ICV Lab",
+    icon: "ramen_dining",
+    coverGradient: "from-[#f7a592] via-[#f2765e] to-[#413333]",
+    badgeClass: "bg-secondary text-on-secondary",
+    image: "/projects/IndFood.png",
+    caseUrl: "https://github.com/salsa-hanaa/indFood-clustering",
   },
 ];
 
@@ -222,6 +237,20 @@ export const ACHIEVEMENTS: Achievement[] = [
     image: "/competition/GCW.JPG"
   },
   {
+    id: "hology-9-fifth-place",
+    badge: "5TH PLACE",
+    points: "+500 PTS",
+    title: "HOLOGY 9.0 Holomine Competition",
+    issuer: "FACULTY OF COMPUTER SCIENCE, BRAWIJAYA UNIVERSITY",
+    year: "2026",
+    description:
+      "Placed fifth in the Holomine data mining competition by solving real-world paddy field segmentation.",
+    icon: "emoji_events",
+    coverGradient: "from-[#315b8c] via-[#23436a] to-[#413333]",
+    badgeClass: "bg-primary text-on-primary",
+    image: "/competition/HOLOGY.png",
+  },
+  {
     id: "statistic-explore-finalist",
     badge: "FINALIST",
     points: "+400 PTS",
@@ -251,7 +280,7 @@ export const ACHIEVEMENTS: Achievement[] = [
   },
 ];
 
-// From the CV (public/CV.pdf): organizations and education, newest first
+// From the CV (public/CV.pdf), newest first in each list
 export interface TimelineEntry {
   id: string;
   role: string;
@@ -260,14 +289,48 @@ export interface TimelineEntry {
   points: string[];
 }
 
+export const WORK: TimelineEntry[] = [
+  {
+    id: "quzuu",
+    role: "Backend Developer & Data Engineer",
+    org: "Quzuu Indonesia",
+    period: "Nov 2025 – now",
+    points: [
+      "Built a reliable ETL migration pipeline that moved 50,000+ questions with data integrity and consistency.",
+      "Resolved 50+ technical tickets with Agile methodology, keeping delivery continuous.",
+    ],
+  },
+];
+
 export const ORGANIZATIONS: TimelineEntry[] = [
+  {
+    id: "hmtc-apprentice",
+    role: "Research and Technology Department Apprentice",
+    org: "HMTC ITS",
+    period: "Oct 2026 – now",
+    points: ["Works on the department's programs: Elite TC Champions, PKTI-TD, and SkenaIT."],
+  },
   {
     id: "avalon",
     role: "Data Science and Artificial Intelligence Division",
     org: "Avalon AI Community",
-    period: "Jul 2026 – now",
+    period: "Nov 2025 – now",
     points: [
+      "Builds final projects on road prioritization with Graph Neural Networks and frontier computer vision.",
       "Qualified through 3 Avalon exams: Math for Machine Learning, Computer Vision, and GAN-Diffusion.",
+    ],
+  },
+];
+
+export const VOLUNTEERING: TimelineEntry[] = [
+  {
+    id: "ise-academy",
+    role: "Data Science Mentor",
+    org: "ISE! Academy ITS",
+    period: "Sep 2026",
+    points: [
+      "Judged final projects from 74 teams, over 200 participants.",
+      "Mentored 10+ teams through hands-on projects.",
     ],
   },
   {
@@ -277,17 +340,16 @@ export const ORGANIZATIONS: TimelineEntry[] = [
     period: "May 2026 – now",
     points: [
       "Designed and evaluated the contest, with measures against cheating and data leakage.",
+      "Worked with the other staff on the competition format and rules.",
+      "Scraped data from the web and checked its quality for the qualification stage.",
     ],
   },
   {
-    id: "quzuu",
-    role: "Backend Developer and Data Engineer",
-    org: "Quzuu Edutech",
-    period: "Nov 2025 – now",
-    points: [
-      "Built a reliable ETL migration pipeline that moved 50,000+ questions with data integrity and consistency.",
-      "Resolved 50+ technical tickets with Agile methodology, keeping delivery continuous.",
-    ],
+    id: "elite-tc",
+    role: "Volunteer, Elite TC Champions",
+    org: "Research and Technology Department, HMTC ITS",
+    period: "May 2026 – now",
+    points: ["Keeps the latest competition information up to date."],
   },
 ];
 
@@ -299,6 +361,7 @@ export const EDUCATION: TimelineEntry[] = [
     period: "Aug 2025 – now",
     points: [
       "GPA 4.00 / 4.00",
+      "Focus: Artificial Intelligence, Data Science, Backend Development",
       "Assistant lecturer, EA234102 Fundamental Programming",
     ],
   },
@@ -306,10 +369,10 @@ export const EDUCATION: TimelineEntry[] = [
     id: "petra5",
     role: "Physics, Chemistry, Informatics, Advanced Mathematics",
     org: "Petra 5 Senior High School",
-    period: "Jun 2022 – Mar 2025",
+    period: "Jun 2022 – Jun 2025",
     points: [
-      "Highest achiever in Advanced Mathematics and Informatics",
-      "School representative, 2024 National Science Olympiad in Informatics, East Java",
+      "Highest achiever in Advanced Mathematics and in Informatics",
+      "Surabaya representative, National Science Olympiad in Informatics (OSN), East Java level",
     ],
   },
 ];

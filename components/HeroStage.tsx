@@ -70,9 +70,10 @@ export function HeroStage() {
 
   return (
     <section className="relative flex min-h-[calc(100svh-5rem)] w-full flex-col items-center justify-center overflow-hidden px-4 pt-10 pb-[max(200px,18vw)] lg:px-8">
-      {/* 對聯: "insert coin to start" / "welcome", hung either side of the marquee */}
-      <Couplet side="left" text="投幣開始" />
-      <Couplet side="right" text="歡迎光臨" />
+      {/* 對聯 from the Analects 7.2: 學而不厭，誨人不倦, "learn without tiring, teach
+          without wearying". First line hangs on the right, read right then left. */}
+      <Couplet side="right" text="學而不厭" />
+      <Couplet side="left" text="誨人不倦" />
 
       <div className="relative z-10 flex w-full max-w-4xl flex-col items-center text-center select-none">
         {/* name seal, read left to right */}

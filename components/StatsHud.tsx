@@ -63,9 +63,6 @@ export function StatsHud() {
               </span>
             </div>
           </div>
-          <p className="mt-5 max-w-prose font-body text-sm leading-[24px] text-on-surface">
-            {PROFILE.bio}
-          </p>
         </Reveal>
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
           <div className="lg:col-span-5">

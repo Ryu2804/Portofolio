@@ -2,7 +2,7 @@ import { CartridgeGrid } from "@/components/CartridgeGrid";
 import { ContinueCta } from "@/components/ContinueCta";
 import { CrtOverlay } from "@/components/CrtOverlay";
 import { HeroStage } from "@/components/HeroStage";
-import { CloudSeam, Koi, LanternSeam, MountainSeam, WaveSeam } from "@/components/Scenery";
+import { CloudSeam, Koi, LanternSeam, MountainSeam, Petals, SkyLanterns, WaveSeam } from "@/components/Scenery";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { StatsHud } from "@/components/StatsHud";
@@ -22,10 +22,12 @@ export default function Home() {
         <MountainSeam />
         <LanternSeam />
         <div className="relative z-[1] bg-primary pt-16 pb-32 md:pt-28">
+          <SkyLanterns />
           <StatsHud />
         </div>
         <CloudSeam />
         <div className="relative z-[1] pb-28">
+          <Petals />
           <CartridgeGrid />
         </div>
         <WaveSeam />

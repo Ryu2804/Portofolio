@@ -1,4 +1,10 @@
-import { EDUCATION, ORGANIZATIONS, type TimelineEntry } from "@/data/portfolio";
+import {
+  EDUCATION,
+  ORGANIZATIONS,
+  VOLUNTEERING,
+  WORK,
+  type TimelineEntry,
+} from "@/data/portfolio";
 
 function Track({ icon, title, entries }: { icon: string; title: string; entries: TimelineEntry[] }) {
   return (
@@ -34,12 +40,14 @@ function Track({ icon, title, entries }: { icon: string; title: string; entries:
   );
 }
 
-/** Organizations and education from the CV, as two dated timelines. */
+/** Work, organizations, volunteering and education from the CV, as dated timelines. */
 export function Journey() {
   return (
     <div className="grid grid-cols-1 gap-8 rounded-lg bg-surface-container-low p-5 shadow-[3px_3px_0px_#413333] md:grid-cols-2 lg:p-6">
-      <Track icon="groups" title="Organizations" entries={ORGANIZATIONS} />
+      <Track icon="work" title="Work" entries={WORK} />
       <Track icon="school" title="Education" entries={EDUCATION} />
+      <Track icon="groups" title="Organizations" entries={ORGANIZATIONS} />
+      <Track icon="volunteer_activism" title="Volunteering" entries={VOLUNTEERING} />
     </div>
   );
 }

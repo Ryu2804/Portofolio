@@ -72,3 +72,80 @@ export function Koi() {
     </>
   );
 }
+
+// Fixed (not random) so server and client render the same markup.
+// Most ride the side margins: the About panel is opaque and hides the middle.
+const SKY_LANTERNS = [
+  { left: "1%", size: 1, dur: 26, delay: -2 },
+  { left: "3.5%", size: 0.7, dur: 33, delay: -17 },
+  { left: "2%", size: 0.85, dur: 29, delay: -9 },
+  { left: "4.5%", size: 0.6, dur: 37, delay: -27 },
+  { left: "95%", size: 0.9, dur: 28, delay: -5 },
+  { left: "97%", size: 0.65, dur: 35, delay: -20 },
+  { left: "96%", size: 1, dur: 31, delay: -13 },
+  { left: "93.5%", size: 0.6, dur: 39, delay: -32 },
+  { left: "22%", size: 0.75, dur: 30, delay: -11 },
+  { left: "48%", size: 0.65, dur: 34, delay: -24 },
+  { left: "71%", size: 0.85, dur: 27, delay: -3 },
+  { left: "86%", size: 0.7, dur: 36, delay: -29 },
+];
+
+/** 孔明灯: glowing sky lanterns rising through the blue valley, behind the content. */
+export function SkyLanterns() {
+  return (
+    <div className="scenery-layer" aria-hidden="true">
+      {SKY_LANTERNS.map((l) => (
+        <img
+          key={l.left}
+          src="/scenery/lantern.svg"
+          alt=""
+          className="sky-lantern pixelated"
+          style={{
+            left: l.left,
+            width: 27 * l.size,
+            height: 42 * l.size,
+            animationDuration: `${l.dur}s`,
+            animationDelay: `${l.delay}s`,
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
+const PETALS = [
+  { left: "3%", dur: 17, delay: -1, drift: 90, light: false },
+  { left: "11%", dur: 21, delay: -9, drift: -60, light: true },
+  { left: "19%", dur: 19, delay: -14, drift: 120, light: false },
+  { left: "28%", dur: 23, delay: -4, drift: -80, light: true },
+  { left: "37%", dur: 18, delay: -11, drift: 70, light: false },
+  { left: "46%", dur: 24, delay: -19, drift: -100, light: true },
+  { left: "55%", dur: 20, delay: -6, drift: 110, light: false },
+  { left: "64%", dur: 22, delay: -16, drift: -70, light: true },
+  { left: "73%", dur: 18, delay: -2, drift: 90, light: false },
+  { left: "82%", dur: 25, delay: -12, drift: -110, light: true },
+  { left: "90%", dur: 19, delay: -7, drift: 60, light: false },
+  { left: "97%", dur: 21, delay: -20, drift: -90, light: true },
+];
+
+/** 梅花: plum-blossom petals drifting down over the paper, behind the content. */
+export function Petals() {
+  return (
+    <div className="scenery-layer" aria-hidden="true">
+      {PETALS.map((p) => (
+        <span
+          key={p.left}
+          className={`petal ${p.light ? "bg-secondary-container" : "bg-secondary"}`}
+          style={
+            {
+              left: p.left,
+              animationDuration: `${p.dur}s`,
+              animationDelay: `${p.delay}s`,
+              "--drift": `${p.drift}px`,
+            } as React.CSSProperties
+          }
+        />
+      ))}
+    </div>
+  );
+}

@@ -203,6 +203,31 @@ body {
 .koi-back {
   animation: swim-back 36s linear infinite;
 }
+/* Full-section layer behind content: z -1 paints above the section's own
+   background but below its content. cqh = the layer's height. */
+.scenery-layer {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  container-type: size;
+}
+.sky-lantern {
+  position: absolute;
+  bottom: -60px;
+  filter: drop-shadow(0 0 6px rgba(242, 118, 94, 0.85));
+  animation: rise linear infinite;
+}
+.petal {
+  position: absolute;
+  top: -16px;
+  width: 9px;
+  height: 9px;
+  border-radius: 80% 0;
+  opacity: 0.8;
+  animation: fall linear infinite;
+}
 .sway {
   transform-origin: top center;
   animation: sway 4s ease-in-out infinite alternate;
@@ -235,6 +260,36 @@ body {
 @keyframes flap {
   to {
     background-position-x: -72px;
+  }
+}
+@keyframes rise {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+  8% {
+    opacity: 1;
+  }
+  50% {
+    transform: translate(14px, calc(-50cqh - 30px));
+  }
+  92% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-6px, calc(-100cqh - 120px));
+    opacity: 0;
+  }
+}
+@keyframes fall {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate(calc(var(--drift) * -0.6), 50cqh) rotate(220deg);
+  }
+  100% {
+    transform: translate(var(--drift), calc(100cqh + 32px)) rotate(480deg);
   }
 }
 @keyframes swim-back {
@@ -419,7 +474,8 @@ body {
   .bird {
     animation: none;
   }
-  .flock {
+  .flock,
+  .scenery-layer {
     display: none;
   }
 }
