@@ -37,12 +37,12 @@ export function ContinueCta() {
   return (
     <section id="contact" className="flex min-h-svh w-full scroll-mt-20 items-center justify-center px-4 py-10 lg:px-8">
       <Reveal className="w-full max-w-3xl">
-      <div className="relative flex w-full flex-col items-center overflow-hidden rounded-xl bg-primary p-6 text-center text-on-primary shadow-[8px_8px_0px_#1f1c0d] lg:p-10">
+      <div className="relative flex w-full flex-col items-center overflow-hidden rounded-xl border-[3px] border-on-surface bg-secondary p-6 text-center text-on-secondary shadow-[8px_8px_0px_#413333] lg:p-10">
         <div
-          className="dot-grid-light pointer-events-none absolute inset-0"
+          className="fret-light pointer-events-none absolute inset-0"
           aria-hidden="true"
         />
-        <div className="z-10 mb-4 flex items-center gap-2 rounded-full bg-inverse-surface px-4 py-1 text-tertiary-fixed shadow-[2px_2px_0px_#000]">
+        <div className="z-10 mb-4 flex items-center gap-2 rounded-full bg-inverse-surface px-4 py-1 text-tertiary-fixed shadow-[2px_2px_0px_#2b2121]">
           <span
             className="material-symbols-outlined text-[18px]"
             aria-hidden="true"
@@ -53,17 +53,18 @@ export function ContinueCta() {
             Continue? <span aria-live="polite">{pad(count)}</span>
           </span>
         </div>
-        <h2 className="font-display z-10 mb-2 text-4xl font-bold tracking-tight uppercase">
+        <h2 className="font-display z-10 mb-2 flex items-center gap-3 text-3xl uppercase sm:text-4xl">
+          <span className="seal hanzi h-10 w-10 shrink-0 text-[18px] [writing-mode:vertical-rl]" aria-hidden="true">聯絡</span>
           Ready to collaborate?
         </h2>
-        <p className="z-10 mb-6 max-w-xl font-body text-base leading-[26px] text-primary-fixed">
+        <p className="z-10 mb-6 max-w-xl font-body text-base leading-[26px] text-on-secondary">
           Insert coin to recruit Player 1 for brand identity, full-stack visual
           design, or art direction campaigns.
         </p>
         <div className="z-10 flex w-full flex-col items-center justify-center gap-4 sm:flex-row">
           <a
             href={`mailto:${PROFILE.email}`}
-            className="font-display flex w-full items-center justify-center gap-2 rounded bg-inverse-surface px-6 py-4 text-xl font-semibold text-inverse-on-surface uppercase shadow-[4px_4px_0px_#000] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-on-primary-fixed-variant hover:text-on-primary hover:shadow-[2px_2px_0px_#000] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none sm:w-auto"
+            className="font-display flex w-full items-center justify-center gap-2 rounded bg-inverse-surface px-6 py-4 text-xl font-semibold text-inverse-on-surface uppercase shadow-[4px_4px_0px_#2b2121] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-on-primary-fixed-variant hover:text-on-primary hover:shadow-[2px_2px_0px_#2b2121] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none sm:w-auto"
           >
             <span className="material-symbols-outlined" aria-hidden="true">
               group_add
@@ -73,7 +74,7 @@ export function ContinueCta() {
           <button
             type="button"
             onClick={copyEmail}
-            className="font-label flex w-full items-center justify-center gap-2 rounded bg-surface-container px-5 py-4 text-[13px] font-bold uppercase tracking-[0.08em] text-on-surface shadow-[4px_4px_0px_#000] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-surface-lowest hover:shadow-[2px_2px_0px_#000] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none sm:w-auto"
+            className="font-label flex w-full items-center justify-center gap-2 rounded bg-surface-container px-5 py-4 text-[13px] font-bold uppercase tracking-[0.08em] text-on-surface shadow-[4px_4px_0px_#2b2121] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-surface-lowest hover:shadow-[2px_2px_0px_#2b2121] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none sm:w-auto"
           >
             <span className="material-symbols-outlined" aria-hidden="true">
               {copied ? "check" : "content_copy"}

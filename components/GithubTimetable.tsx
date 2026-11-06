@@ -2,7 +2,6 @@
 
 import { Fragment, useMemo } from "react";
 import {
-  TIMETABLE_WEEKS,
   buildTimetable,
   commitLevel,
   type GithubProfile,
@@ -15,7 +14,6 @@ interface GithubTimetableProps {
   totalCommits: number;
   loading: boolean;
   error: string | null;
-  rateLimited: boolean;
   onRetry: () => void;
 }
 
@@ -28,17 +26,13 @@ export function GithubTimetable({
   totalCommits,
   loading,
   error,
-  rateLimited,
   onRetry,
 }: GithubTimetableProps) {
   const cols = useMemo(() => buildTimetable(commitsByDay), [commitsByDay]);
 
-  // Kena rate limit → sembunyikan total, jangan tampilkan error
-  if (rateLimited) return null;
-
   if (!username) {
     return (
-      <div className="rounded-lg border-2 border-dashed border-outline bg-surface-container-low p-5 text-center shadow-[4px_4px_0px_#1f1c0d]">
+      <div className="rounded-lg border-2 border-dashed border-outline bg-surface-container-low p-5 text-center shadow-[4px_4px_0px_#413333]">
         <span
           className="material-symbols-outlined text-[32px] text-secondary"
           aria-hidden="true"
@@ -49,15 +43,15 @@ export function GithubTimetable({
           Insert GitHub username
         </p>
         <p className="font-body mt-2 text-xs leading-relaxed text-on-surface-variant">
-          Isi <code>githubUsername</code> di <code>data/portfolio.ts</code>{" "}
-          untuk menampilkan statistik & timetable commit asli.
+          Set <code>githubUsername</code> in <code>data/portfolio.ts</code> to
+          show real stats and the commit timetable.
         </p>
       </div>
     );
   }
 
   return (
-    <div className="rounded-lg bg-inverse-surface p-4 text-inverse-on-surface shadow-[4px_4px_0px_#000]">
+    <div className="rounded-lg bg-inverse-surface p-4 text-inverse-on-surface shadow-[4px_4px_0px_#2b2121]">
       <div className="mb-3 flex items-center justify-between gap-2">
         <div className="flex items-center gap-2">
           <span
@@ -67,7 +61,7 @@ export function GithubTimetable({
             history
           </span>
           <span className="font-display text-base font-semibold uppercase tracking-wider">
-            GitHub Timetable
+            GitHub contributions
           </span>
         </div>
         {profile && (
@@ -111,9 +105,9 @@ export function GithubTimetable({
           <button
             type="button"
             onClick={onRetry}
-            className="font-label mt-3 rounded bg-primary px-4 py-2 text-[11px] font-bold uppercase tracking-[0.1em] text-on-primary shadow-[2px_2px_0px_#000] transition-all hover:bg-secondary active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
+            className="font-label mt-3 rounded bg-primary px-4 py-2 text-[11px] font-bold uppercase tracking-[0.1em] text-on-primary shadow-[2px_2px_0px_#2b2121] transition-all hover:bg-secondary active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
           >
-            Coba lagi
+            Try again
           </button>
         </div>
       ) : (
@@ -122,7 +116,7 @@ export function GithubTimetable({
             {[
               { label: "Repos", value: profile?.public_repos ?? "–" },
               { label: "Followers", value: profile?.followers ?? "–" },
-              { label: "Commits", value: totalCommits },
+              { label: "Contributions", value: totalCommits },
             ].map((chip) => (
               <div
                 key={chip.label}
@@ -138,13 +132,14 @@ export function GithubTimetable({
             ))}
           </div>
 
+          <div className="no-scrollbar mt-3 overflow-x-auto md:overflow-visible">
           <div
-            className="mt-3 grid w-full gap-[3px]"
+            className="grid w-full min-w-[640px] gap-[3px]"
             style={{
               gridTemplateColumns: `2.25rem repeat(${cols.length}, minmax(0, 1fr))`,
             }}
             role="img"
-            aria-label={`Timetable commit ${TIMETABLE_WEEKS} minggu terakhir, total ${totalCommits} commit`}
+            aria-label={`GitHub contributions in the last year: ${totalCommits}`}
           >
             <div aria-hidden="true" />
             {cols.map((col, i) => {
@@ -176,8 +171,8 @@ export function GithubTimetable({
                       key={cell.key}
                       title={
                         cell.count === null
-                          ? "Belum terjadi"
-                          : `${cell.count} commit • ${cell.label}`
+                          ? "Upcoming"
+                          : `${cell.count} ${cell.count === 1 ? "contribution" : "contributions"} on ${cell.label}`
                       }
                       className="aspect-square w-full rounded-[3px]"
                       style={{ backgroundColor: commitLevel(cell.count) }}
@@ -186,6 +181,8 @@ export function GithubTimetable({
                 })}
               </Fragment>
             ))}
+          </div>
+
           </div>
 
           <div className="mt-2 flex items-center justify-end gap-1">
@@ -208,7 +205,7 @@ export function GithubTimetable({
       )}
 
       <p className="font-label mt-3 border-t border-white/10 pt-2 text-center text-[10px] uppercase tracking-[0.1em] text-inverse-on-surface/50">
-        Recent public pushes • {TIMETABLE_WEEKS} minggu terakhir
+        Contributions in the last year, from the GitHub profile graph
       </p>
     </div>
   );

@@ -30,7 +30,7 @@ export function ContactLinks() {
       {CONTACTS.map((c) => {
         const ready = c.href.trim() !== "";
         const box =
-          "flex h-10 w-10 items-center justify-center rounded bg-inverse-surface shadow-[2px_2px_0px_#000]";
+          "flex h-10 w-10 items-center justify-center rounded bg-inverse-surface shadow-[2px_2px_0px_#2b2121]";
         const icon = (
           // eslint-disable-next-line @next/next/no-img-element
           <img
@@ -50,7 +50,7 @@ export function ContactLinks() {
             rel="noreferrer"
             aria-label={c.label}
             title={c.label}
-            className={`${box} transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-on-primary-fixed-variant hover:shadow-[1px_1px_0px_#000] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none`}
+            className={`${box} transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-on-primary-fixed-variant hover:shadow-[1px_1px_0px_#2b2121] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none`}
           >
             {icon}
           </a>

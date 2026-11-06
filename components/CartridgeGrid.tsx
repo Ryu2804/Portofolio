@@ -28,7 +28,7 @@ export function CartridgeGrid() {
     >
       <div className="mx-auto w-full max-w-7xl">
       <Reveal>
-      <div className="mb-8 flex flex-col justify-between gap-3 rounded-lg bg-surface-container-high p-4 pb-4 shadow-[3px_3px_0px_#1f1c0d] md:flex-row md:items-end">
+      <div className="mb-8 flex flex-col justify-between gap-3 rounded-lg bg-surface-container-high p-4 pb-4 shadow-[3px_3px_0px_#413333] md:flex-row md:items-end">
         <div>
           <div className="font-label mb-1 flex items-center gap-2 text-[13px] font-bold uppercase tracking-[0.08em] text-primary">
             <span
@@ -39,7 +39,8 @@ export function CartridgeGrid() {
             </span>
             <span>Select mission // Stage catalog</span>
           </div>
-          <h2 className="font-display text-4xl font-bold tracking-tight text-on-surface uppercase">
+          <h2 className="font-display flex items-center gap-3 text-3xl text-on-surface uppercase sm:text-4xl">
+            <span className="seal hanzi h-10 w-10 shrink-0 text-[18px] [writing-mode:vertical-rl]" aria-hidden="true">卡帶</span>
             Cartridge archives
           </h2>
         </div>
@@ -55,7 +56,7 @@ export function CartridgeGrid() {
               aria-pressed={filter === f}
               className={
                 filter === f
-                  ? "rounded bg-primary px-2 py-1 font-label text-[11px] font-bold uppercase tracking-[0.1em] text-on-primary shadow-[1px_1px_0px_#1f1c0d]"
+                  ? "rounded bg-primary px-2 py-1 font-label text-[11px] font-bold uppercase tracking-[0.1em] text-on-primary shadow-[1px_1px_0px_#413333]"
                   : "rounded bg-surface-container px-2 py-1 font-label text-[11px] font-bold uppercase tracking-[0.1em] text-on-surface hover:bg-surface-container-highest"
               }
             >

@@ -69,62 +69,84 @@ export function HeroStage() {
   }
 
   return (
-    <section className="relative flex min-h-[calc(100svh-5rem)] w-full flex-col items-center justify-center overflow-hidden px-4 py-10 lg:px-8">
-      <div
-        className="dot-grid pointer-events-none absolute inset-0 opacity-40"
-        aria-hidden="true"
-      />
+    <section className="relative flex min-h-[calc(100svh-5rem)] w-full flex-col items-center justify-center overflow-hidden px-4 pt-10 pb-[max(200px,18vw)] lg:px-8">
+      {/* 對聯: "insert coin to start" / "welcome", hung either side of the marquee */}
+      <Couplet side="left" text="投幣開始" />
+      <Couplet side="right" text="歡迎光臨" />
 
-      <div className="relative z-10 flex w-full max-w-5xl flex-col items-center text-center select-none">
-        <span className="font-display mb-2 text-2xl font-semibold tracking-widest text-tertiary uppercase drop-shadow-sm">
+      <div className="relative z-10 flex w-full max-w-4xl flex-col items-center text-center select-none">
+        {/* name seal, read left to right */}
+        <span
+          className="seal mb-6 -rotate-3 px-4 py-2 text-[32px] tracking-[0.12em]"
+          role="img"
+          lang="zh-Hant"
+          aria-label="馬福隆, Chinese name"
+        >
+          馬福隆
+        </span>
+        <span className="mb-3 font-body text-base font-bold tracking-wide text-tertiary">
           {todayLabel}
-        </span> 
-        <h1 className="font-display text-[52px] leading-[54px] font-bold tracking-tighter uppercase sm:text-[88px] sm:leading-[90px] lg:text-[112px] lg:leading-[110px]">
-          <span className="arcade-title arcade-outline">Hi! My Name is </span>
+        </span>
+        <h1 className="font-display text-[40px] leading-[1.05] uppercase sm:text-[64px] lg:text-[88px]">
+          <span className="arcade-title">Hi! My name is </span>
           <span
-            className={`arcade-title arcade-outline relative inline-block ${glitching ? "glitching" : ""} ${glitchName === "RyZ" ? "ryz-mode" : ""}`}
+            className={`arcade-title relative inline-block ${glitching ? "glitching" : ""} ${glitchName === "RyZ" ? "ryz-mode" : ""}`}
           >
             {glitchName}
           </span>
         </h1>
-        <div className="mt-3 inline-block rounded bg-surface-container px-6 py-2 shadow-[3px_3px_0px_#1f1c0d]">
-          <span className="font-display text-3xl font-semibold tracking-widest text-primary uppercase sm:text-4xl">
+        <div className="mt-8 inline-block rounded-sm border-[3px] border-on-surface bg-secondary px-6 py-2 shadow-[4px_4px_0px_#315b8c]">
+          <span className="font-display text-xl text-on-secondary uppercase sm:text-2xl">
             Machine Learning Engineer
           </span>
         </div>
 
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
           <a
             href="#cartridges"
-            className="font-display flex items-center gap-2 rounded bg-primary px-6 py-3 text-xl font-semibold tracking-wider text-on-primary uppercase shadow-[4px_4px_0px_#1f1c0d] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-secondary hover:shadow-[2px_2px_0px_#1f1c0d] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none"
+            className="font-display flex items-center gap-2 rounded-sm border-[3px] border-on-surface bg-primary px-6 py-3 text-lg text-on-primary uppercase shadow-[4px_4px_0px_#413333] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-primary-container hover:shadow-[2px_2px_0px_#413333] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none"
           >
             <span className="material-symbols-outlined" aria-hidden="true">
               sports_esports
             </span>
-            [ Project Cartridge ]
+            Play the projects
           </a>
           <button
             type="button"
             onClick={handleResume}
-            className="font-display flex items-center gap-2 rounded bg-surface-container px-5 py-3 text-xl font-semibold tracking-wider text-on-surface uppercase shadow-[4px_4px_0px_#1f1c0d] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-surface-container-highest hover:shadow-[2px_2px_0px_#1f1c0d] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none"
+            className="font-display flex items-center gap-2 rounded-sm border-[3px] border-on-surface bg-surface-container-low px-5 py-3 text-lg text-on-surface uppercase shadow-[4px_4px_0px_#413333] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-surface-container-highest hover:shadow-[2px_2px_0px_#413333] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none"
           >
             <span className="material-symbols-outlined" aria-hidden="true">
               {romState === "loaded" ? "check" : "download"}
             </span>
-            {romState === "loaded" ? "[ ROM LOADED! ]" : "[ RESUME.ROM ]"}
+            {romState === "loaded" ? "CV downloaded" : "Download CV"}
           </button>
         </div>
 
-        <div className="mt-6 flex items-center gap-2">
-          <span className="animate-pulse font-body text-sm tracking-wider text-on-surface uppercase">
-            Press any key or insert coin to explore
+        <div className="mt-8 flex items-center gap-2 rounded-sm bg-surface px-3 py-1">
+          <span className="font-body text-sm tracking-wide text-on-surface-variant">
+            Insert coin to explore
           </span>
           <span
-            className="inline-block h-4 w-2.5 animate-blink bg-primary"
+            className="inline-block h-4 w-2.5 animate-blink bg-secondary"
             aria-hidden="true"
           />
         </div>
       </div>
     </section>
+  );
+}
+
+function Couplet({ side, text }: { side: "left" | "right"; text: string }) {
+  return (
+    <div
+      className={`pointer-events-none absolute top-0 z-0 hidden flex-col items-center md:flex ${side === "left" ? "left-[4%] lg:left-[7%]" : "right-[4%] lg:right-[7%]"}`}
+      aria-hidden="true"
+    >
+      <div className="couplet-cord h-10 lg:h-16" />
+      <div className="couplet px-3 py-5 text-[40px] tracking-[0.15em] lg:px-4 lg:py-6 lg:text-[56px]">
+        {text}
+      </div>
+    </div>
   );
 }

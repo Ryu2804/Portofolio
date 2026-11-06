@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Courier_Prime, Space_Grotesk, Space_Mono } from "next/font/google";
+import { Bungee, Space_Mono } from "next/font/google";
 import "./globals.css";
 
-const spaceGrotesk = Space_Grotesk({
+const bungee = Bungee({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: "400",
 });
 
 const spaceMono = Space_Mono({
@@ -14,11 +14,9 @@ const spaceMono = Space_Mono({
   weight: ["400", "700"],
 });
 
-const courierPrime = Courier_Prime({
-  variable: "--font-label",
-  subsets: ["latin"],
-  weight: ["400", "700"],
-});
+// Only the Hanzi actually rendered on the page, so the CJK font stays tiny.
+// Add new characters here when you add them to a component.
+const HANZI = "馬福隆投幣開始歡迎光臨檔案卡帶聯絡";
 
 export const metadata: Metadata = {
   title: "Benedictus Ryu Gunawan",
@@ -30,12 +28,16 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${spaceGrotesk.variable} ${spaceMono.variable} ${courierPrime.variable} h-full antialiased`}
+      className={`${bungee.variable} ${spaceMono.variable} h-full antialiased`}
     >
       <head>
         {/* eslint-disable-next-line @next/next/no-page-custom-font -- Material Symbols icon font */}
         <link
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap"
+          rel="stylesheet"
+        />
+        <link
+          href={`https://fonts.googleapis.com/css2?family=ZCOOL+QingKe+HuangYou&display=swap&text=${encodeURIComponent(HANZI)}`}
           rel="stylesheet"
         />
       </head>

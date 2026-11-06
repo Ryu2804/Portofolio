@@ -26,6 +26,8 @@ export const PROFILE = {
   instagram: "https://www.instagram.com/benedictus.ryu/",
   linkedin: "https://www.linkedin.com/in/benedictus-ryu-gunawan-644238374/",
   kaggle: "https://www.kaggle.com/benedictusryugunawan",
+  location: "Surabaya, Indonesia",
+  bio: "I am an Artificial Intelligence Engineering student at Sepuluh Nopember Institute of Technology (ITS) with a deep passion for Data Science, Machine Learning, and backend development. With an in-depth understanding of ML and a background in competitive programming, I thrive on sharpening my analytical and problem-solving skills. I learn fast, adapt quickly to new technologies, and am committed to continuous growth in the tech ecosystem.",
 } as const;
 
 export const PROJECTS: Project[] = [
@@ -40,7 +42,7 @@ export const PROJECTS: Project[] = [
     year: "2025",
     client: "Laboratory of Intelligent Computing and Vision",
     icon: "record_voice_over",
-    coverGradient: "from-[#d23f40] via-[#974721] to-[#360f00]",
+    coverGradient: "from-[#315b8c] via-[#23436a] to-[#413333]",
     badgeClass: "bg-primary text-on-primary",
     image: "/projects/GardenBunga.png",
     caseUrl: "https://masterzaff.github.io/gardenbunga/",
@@ -56,7 +58,7 @@ export const PROJECTS: Project[] = [
     year: "2026",
     client: "DINACOM 11.0",
     icon: "add_road",
-    coverGradient: "from-[#ff996c] via-[#974721] to-[#772f09]",
+    coverGradient: "from-[#f2765e] via-[#c9533d] to-[#413333]",
     badgeClass: "bg-secondary text-on-secondary",
     image: "/projects/SiLaju.png",
     caseUrl: "https://github.com/orgs/SILAJU-Hackathon/repositories",
@@ -72,7 +74,7 @@ export const PROJECTS: Project[] = [
     year: "2026",
     client: "Unity #14",
     icon: "satellite_alt",
-    coverGradient: "from-[#eec063] via-[#946f18] to-[#261900]",
+    coverGradient: "from-[#413333] via-[#315b8c] to-[#23436a]",
     badgeClass: "bg-tertiary-container text-on-tertiary-container",
     image: "/projects/DisasterSegmentation.png",
     caseUrl: "https://github.com/alfiwillianz/buildings/tree/main",
@@ -88,7 +90,7 @@ export const PROJECTS: Project[] = [
     year: "2026",
     client: "GUNADARMA CODE WEEK 2.0",
     icon: "smart_toy",
-    coverGradient: "from-[#ffb3ae] via-[#d23f40] to-[#410005]",
+    coverGradient: "from-[#f7a592] via-[#f2765e] to-[#413333]",
     badgeClass: "bg-primary-container text-on-primary-container",
     image: "/projects/SiTukang.png",
     caseUrl: "https://github.com/orgs/UCGW-Hackathon/repositories",
@@ -187,7 +189,7 @@ export const ACHIEVEMENTS: Achievement[] = [
     description:
       "Developed a Siamese self-supervised learning model for post-disaster damage segmentation, achieving a 6% average improvement over the xBD paper baseline.",
     icon: "emoji_events",
-    coverGradient: "from-[#eec063] via-[#946f18] to-[#261900",
+    coverGradient: "from-[#413333] via-[#315b8c] to-[#23436a]",
     badgeClass: "bg-tertiary-container text-on-tertiary-container",
     image: "/competition/unity.jpeg",
   },
@@ -201,7 +203,7 @@ export const ACHIEVEMENTS: Achievement[] = [
     description:
       "Built a ResNet-based road damage classifier with 97% accuracy and a Graph Neural Network to prioritize road maintenance.",
     icon: "military_tech",
-    coverGradient: "from-[#ffb3ae] via-[#d23f40] to-[#410005]",
+    coverGradient: "from-[#f7a592] via-[#f2765e] to-[#413333]",
     badgeClass: "bg-primary text-on-primary",
     image: "/competition/dinacom.jpeg",
   },
@@ -215,7 +217,7 @@ export const ACHIEVEMENTS: Achievement[] = [
     description:
       "Integrated a low-latency Retrieval-Augmented Generation pipeline into a mobile application for customer-worker peer-to-peer support.",
     icon: "workspace_premium",
-    coverGradient: "from-[#ff996c] via-[#974721] to-[#772f09]",
+    coverGradient: "from-[#f2765e] via-[#c9533d] to-[#413333]",
     badgeClass: "bg-secondary text-on-secondary",
     image: "/competition/GCW.JPG"
   },
@@ -229,7 +231,7 @@ export const ACHIEVEMENTS: Achievement[] = [
     description:
       "Ranked third in the qualifier stage with a 0.421838 private Macro-F1 score by addressing severe missing data and class imbalance.",
     icon: "leaderboard",
-    coverGradient: "from-[#d23f40] via-[#974721] to-[#360f00]",
+    coverGradient: "from-[#315b8c] via-[#23436a] to-[#413333]",
     badgeClass: "bg-primary-container text-on-primary-container",
     image: "/competition/statexplore.png",
   },
@@ -243,9 +245,72 @@ export const ACHIEVEMENTS: Achievement[] = [
     description:
       "Received the Best Implementation Project recognition for Garden Bunga, an efficient Indonesian speech synthesis system using multilingual knowledge transfer.",
     icon: "verified",
-    coverGradient: "from-[#ffb596] via-[#ff996c] to-[#79310b]",
+    coverGradient: "from-[#315b8c] via-[#f2765e] to-[#413333]",
     badgeClass: "bg-secondary-container text-on-secondary-container",
     image: "/competition/kcvanguard.webp",
+  },
+];
+
+// From the CV (public/CV.pdf): organizations and education, newest first
+export interface TimelineEntry {
+  id: string;
+  role: string;
+  org: string;
+  period: string;
+  points: string[];
+}
+
+export const ORGANIZATIONS: TimelineEntry[] = [
+  {
+    id: "avalon",
+    role: "Data Science and Artificial Intelligence Division",
+    org: "Avalon AI Community",
+    period: "Jul 2026 – now",
+    points: [
+      "Qualified through 3 Avalon exams: Math for Machine Learning, Computer Vision, and GAN-Diffusion.",
+    ],
+  },
+  {
+    id: "schematics",
+    role: "Data Science Competition Staff",
+    org: "Schematics ITS",
+    period: "May 2026 – now",
+    points: [
+      "Designed and evaluated the contest, with measures against cheating and data leakage.",
+    ],
+  },
+  {
+    id: "quzuu",
+    role: "Backend Developer and Data Engineer",
+    org: "Quzuu Edutech",
+    period: "Nov 2025 – now",
+    points: [
+      "Built a reliable ETL migration pipeline that moved 50,000+ questions with data integrity and consistency.",
+      "Resolved 50+ technical tickets with Agile methodology, keeping delivery continuous.",
+    ],
+  },
+];
+
+export const EDUCATION: TimelineEntry[] = [
+  {
+    id: "its",
+    role: "Artificial Intelligence Engineering (B.Sc.)",
+    org: "Institut Teknologi Sepuluh Nopember",
+    period: "Aug 2025 – now",
+    points: [
+      "GPA 4.00 / 4.00",
+      "Assistant lecturer, EA234102 Fundamental Programming",
+    ],
+  },
+  {
+    id: "petra5",
+    role: "Physics, Chemistry, Informatics, Advanced Mathematics",
+    org: "Petra 5 Senior High School",
+    period: "Jun 2022 – Mar 2025",
+    points: [
+      "Highest achiever in Advanced Mathematics and Informatics",
+      "School representative, 2024 National Science Olympiad in Informatics, East Java",
+    ],
   },
 ];
 

@@ -14,14 +14,17 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 right-0 left-0 z-50 bg-surface-container-high/95 backdrop-blur-md">
+    <header className="fixed top-0 right-0 left-0 z-50 border-b-[3px] border-on-surface bg-surface-container-high/95 backdrop-blur-md">
       <div className="flex h-20 w-full items-center justify-between gap-4 px-4 lg:px-8">
         <div className="flex items-center gap-4">
-          <div className="flex flex-col">
-            <span className="font-display text-xl font-semibold tracking-tight text-primary">
+          <a href="#" className="flex items-center gap-3">
+            <span className="seal h-9 w-9 text-[22px]" aria-hidden="true">
+              馬
+            </span>
+            <span className="font-display text-xl text-primary">
               CodeWithRyZ
             </span>
-          </div>
+          </a>
 
         </div>
 
@@ -71,7 +74,7 @@ export function SiteHeader() {
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-label="Toggle menu"
-            className="flex h-10 w-10 items-center justify-center rounded bg-surface-container text-on-surface shadow-[2px_2px_0px_#1f1c0d] lg:hidden"
+            className="flex h-10 w-10 items-center justify-center rounded bg-surface-container text-on-surface shadow-[2px_2px_0px_#413333] lg:hidden"
           >
             <span className="material-symbols-outlined" aria-hidden="true">
               {open ? "close" : "menu"}

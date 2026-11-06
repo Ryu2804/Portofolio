@@ -9,7 +9,7 @@ export function ProfilePhoto({ label }: { label: string }) {
 
   return (
     <figure className="flex h-full w-full flex-col">
-      <div className="relative aspect-[9/16] max-h-[80svh] w-full flex-1 overflow-hidden rounded-lg bg-surface-container-low shadow-[4px_4px_0px_#1f1c0d] lg:aspect-auto lg:max-h-none lg:min-h-[420px]">
+      <div className="relative aspect-[9/16] max-h-[80svh] w-full flex-1 overflow-hidden rounded-lg bg-surface-container-low shadow-[4px_4px_0px_#413333] lg:aspect-auto lg:max-h-none lg:min-h-[420px]">
         {!failed ? (
           <Image
             src="/profile.jpg"
@@ -20,7 +20,7 @@ export function ProfilePhoto({ label }: { label: string }) {
             onError={() => setFailed(true)}
           />
         ) : (
-          <div className="halftone absolute inset-0 flex flex-col items-center justify-center gap-2 bg-gradient-to-br from-secondary-container via-secondary to-[#360f00] p-6 text-center">
+          <div className="halftone absolute inset-0 flex flex-col items-center justify-center gap-2 bg-gradient-to-br from-secondary-container via-secondary to-[#413333] p-6 text-center">
             <span
               className="material-symbols-outlined text-[72px] text-white drop-shadow-[3px_3px_0_rgba(0,0,0,0.55)]"
               aria-hidden="true"

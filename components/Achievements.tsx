@@ -75,7 +75,7 @@ export function Achievements() {
     <div id="achievements" className="w-full scroll-mt-20">
       <div className="w-full">
         <Reveal>
-        <div className="mb-8 flex flex-col justify-between gap-3 rounded-lg bg-surface-container-high p-4 shadow-[3px_3px_0px_#1f1c0d] md:flex-row md:items-end">
+        <div className="mb-8 flex flex-col justify-between gap-3 rounded-lg bg-surface-container-high p-4 shadow-[3px_3px_0px_#413333] md:flex-row md:items-end">
           <div>
             <div className="font-label mb-1 flex items-center gap-2 text-[13px] font-bold uppercase tracking-[0.08em] text-primary">
               <span
@@ -102,7 +102,7 @@ export function Achievements() {
               type="button"
               onClick={() => slide(-1)}
               aria-label="Geser ke kiri"
-              className="flex h-10 w-10 items-center justify-center rounded bg-surface-container text-on-surface shadow-[2px_2px_0px_#1f1c0d] transition-all hover:bg-surface-container-highest active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
+              className="flex h-10 w-10 items-center justify-center rounded bg-surface-container text-on-surface shadow-[2px_2px_0px_#413333] transition-all hover:bg-surface-container-highest active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
             >
               <span className="material-symbols-outlined" aria-hidden="true">
                 chevron_left
@@ -112,7 +112,7 @@ export function Achievements() {
               type="button"
               onClick={() => slide(1)}
               aria-label="Geser ke kanan"
-              className="flex h-10 w-10 items-center justify-center rounded bg-primary text-on-primary shadow-[2px_2px_0px_#1f1c0d] transition-all hover:bg-secondary active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
+              className="flex h-10 w-10 items-center justify-center rounded bg-primary text-on-primary shadow-[2px_2px_0px_#413333] transition-all hover:bg-secondary active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
             >
               <span className="material-symbols-outlined" aria-hidden="true">
                 chevron_right
@@ -143,11 +143,11 @@ export function Achievements() {
                 key={`${a.id}${dup ? "-loop" : ""}`}
                 data-card
                 aria-hidden={dup || undefined}
-                className="w-[85%] shrink-0 rounded-lg bg-surface-container p-5 shadow-[5px_5px_0px_#1f1c0d] sm:w-[400px]"
+                className="w-[85%] shrink-0 rounded-lg bg-surface-container p-5 shadow-[5px_5px_0px_#413333] sm:w-[400px]"
               >
                 <div className="mb-3 flex items-center justify-between gap-2">
                   <span
-                    className={`rounded px-2 py-1 font-label text-[11px] font-bold uppercase tracking-[0.1em] shadow-[2px_2px_0px_#1f1c0d] ${a.badgeClass}`}
+                    className={`rounded px-2 py-1 font-label text-[11px] font-bold uppercase tracking-[0.1em] shadow-[2px_2px_0px_#413333] ${a.badgeClass}`}
                   >
                     {a.badge}
                   </span>
@@ -156,7 +156,7 @@ export function Achievements() {
                   </span>
                 </div>
                 <div
-                  className={`relative mb-4 flex aspect-video w-full items-center justify-center overflow-hidden rounded shadow-[2px_2px_0px_#1f1c0d] ${
+                  className={`relative mb-4 flex aspect-video w-full items-center justify-center overflow-hidden rounded shadow-[2px_2px_0px_#413333] ${
                     showPhoto
                       ? "bg-surface-dim"
                       : `halftone bg-gradient-to-br ${a.coverGradient}`
