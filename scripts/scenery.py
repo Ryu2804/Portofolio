@@ -71,7 +71,7 @@ def mountains():
         for y in range(top,H):
             if dither(x,y): g[(x,y)]=L
     for x in range(W):
-        top=H-max(ridge(front,x),14)
+        top=H-max(ridge(front,x),26)
         for y in range(top,H):
             if dither(x,y): g[(x,y)]=K if y==top else B
     # pagoda on the 236 peak

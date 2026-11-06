@@ -50,25 +50,17 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <div className="hidden items-center gap-1 bg-surface-container px-2 py-1 sm:flex">
-            <span
-              className="material-symbols-outlined text-[18px] text-secondary"
-              aria-hidden="true"
-            >
-              volume_up
+          <a
+            href="/CV.pdf"
+            download="Benedictus_Ryu_Gunawan_CV.pdf"
+            aria-label="Download CV"
+            className="font-display flex h-10 items-center gap-2 rounded-sm border-[3px] border-on-surface bg-secondary px-2 text-sm text-on-secondary uppercase shadow-[2px_2px_0px_#413333] transition-all hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0px_#413333] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none sm:px-3"
+          >
+            <span className="material-symbols-outlined text-[20px]" aria-hidden="true">
+              download
             </span>
-            <span className="font-label text-[11px] font-bold uppercase tracking-[0.1em] text-on-surface">
-              VOL 8-BIT
-            </span>
-          </div>
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary">
-            <span
-              className="material-symbols-outlined text-[18px] text-on-primary"
-              aria-hidden="true"
-            >
-              person
-            </span>
-          </div>
+            <span className="hidden sm:inline">Download CV</span>
+          </a>
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}

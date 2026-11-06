@@ -128,9 +128,33 @@ body {
     0.0875em 0.0875em 0 #413333,
     0.105em 0.105em 0 #413333;
 }
-/* Glitch sesaat pada nama hero */
-.glitching {
-  animation: glitch-jitter 0.12s steps(2) infinite;
+
+/* Ryu → RyZ: the last letter glides while the glaze crossfades */
+.ryu-word {
+  transition:
+    color 0.5s ease,
+    text-shadow 0.5s ease;
+}
+.ryu-swap {
+  display: inline-grid;
+}
+.ryu-swap > span {
+  grid-area: 1 / 1;
+  transition:
+    transform 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.45s ease;
+}
+.ryu-z {
+  opacity: 0;
+  transform: translateY(0.35em);
+}
+.is-ryz .ryu-u {
+  opacity: 0;
+  transform: translateY(-0.35em);
+}
+.is-ryz .ryu-z {
+  opacity: 1;
+  transform: none;
 }
 
 /* Mode RyZ: inverted glaze, lacquer face with porcelain depth */
@@ -143,27 +167,6 @@ body {
     0.0700em 0.0700em 0 #315b8c,
     0.0875em 0.0875em 0 #413333,
     0.105em 0.105em 0 #413333;
-}
-
-@keyframes glitch-jitter {
-  0% {
-    transform: translate(0);
-  }
-  20% {
-    transform: translate(-2px, 1px) skewX(-2deg);
-  }
-  40% {
-    transform: translate(2px, -1px);
-  }
-  60% {
-    transform: translate(-1px, 2px) skewX(2deg);
-  }
-  80% {
-    transform: translate(1px, -2px);
-  }
-  100% {
-    transform: translate(0);
-  }
 }
 
 /* Pixel scenery (components/Scenery.tsx) */
@@ -203,6 +206,37 @@ body {
 .koi-back {
   animation: swim-back 36s linear infinite;
 }
+/* Hero role plaque: each new role flips in like a cartridge label */
+.role-flip {
+  animation: role-flip 0.35s cubic-bezier(0.3, 1.4, 0.6, 1);
+}
+@keyframes role-flip {
+  from {
+    opacity: 0;
+    transform: perspective(300px) rotateX(-90deg);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Tech stack ticker (components/TechMarquee.tsx) */
+.marquee {
+  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+.marquee-track {
+  animation: marquee 60s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 /* Full-section layer behind content: z -1 paints above the section's own
    background but below its content. cqh = the layer's height. */
 .scenery-layer {
@@ -477,5 +511,11 @@ body {
   .flock,
   .scenery-layer {
     display: none;
+  }
+  .marquee-track {
+    animation: none;
+  }
+  .marquee {
+    overflow-x: auto;
   }
 }

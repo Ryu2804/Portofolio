@@ -21,7 +21,7 @@ export default function Home() {
         </div>
         <MountainSeam />
         <LanternSeam />
-        <div className="relative z-[1] bg-primary pt-16 pb-32 md:pt-28">
+        <div className="relative z-[1] bg-primary pt-12 pb-32 md:pt-20">
           <SkyLanterns />
           <StatsHud />
         </div>
