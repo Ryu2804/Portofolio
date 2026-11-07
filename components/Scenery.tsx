@@ -22,7 +22,8 @@ const pixel = "pixelated absolute inset-0 h-full w-full";
 export function MountainSeam() {
   return (
     <Seam className="-top-[max(300px,31.25vw)] h-[calc(max(300px,31.25vw)+4px)] overflow-hidden">
-      <img src="/scenery/mountains.svg" alt="" className={pixel} />
+      <img src="/scenery/mountains.svg" alt="" className={`${pixel} day-only`} />
+      <img src="/scenery/mountains-night.svg" alt="" className={`${pixel} night-only`} />
       <img src="/scenery/mountain-clouds.svg" alt="" className={`${pixel} drift`} />
       <div className="flock absolute top-[6%] left-0">
         <span className="bird" />

@@ -1,6 +1,7 @@
 """Generate pixel-art scenery paths for components/Scenery.tsx."""
 import math, sys
 K,C,B,P,D,L="#413333","#f2765e","#315b8c","#f5ebdd","#23436a","#9fb2c8"
+N="#2b2121"  # night page background (globals.css --color-surface at night)
 
 def paths(grid):
     """grid: dict (x,y)->color. Returns {color: pathdata} with row run-length rects."""
@@ -50,7 +51,7 @@ def cloud(cx,cy,blobs,grid):
     sprite(curl,{"B":B},ox=cx+dx-3,oy=cy+dy-3,grid=grid)
     return grid
 
-def mountains():
+def mountains(night=False):
     W,H=320,100
     g={}
     def ridge(peaks,x):
@@ -62,10 +63,26 @@ def mountains():
     front=[(44,48,1.1),(112,40,1.2),(166,30,1.3),(236,56,1.0),(300,38,1.2)]
     def dither(x,y):
         return True
-    # sun
-    for y in range(H):
-        for x in range(W):
-            if (x-188)**2+(y-30)**2<=15*15 and dither(x,y): g[(x,y)]=C
+    if night:
+        # stars: fixed pseudo-random sky pixels (mountains drawn later cover the low ones)
+        seed=7
+        for _ in range(70):
+            seed=(seed*1103515245+12345)%2**31; x=seed%W
+            seed=(seed*1103515245+12345)%2**31; y=seed%60
+            g[(x,y)]=P
+        # moon with two craters
+        for y in range(H):
+            for x in range(W):
+                if (x-188)**2+(y-30)**2<=12*12: g[(x,y)]=P
+        for cx,cy,r in ((184,27,3),(193,34,2)):
+            for y in range(cy-r,cy+r+1):
+                for x in range(cx-r,cx+r+1):
+                    if (x-cx)**2+(y-cy)**2<=r*r: g[(x,y)]=L
+    else:
+        # sun
+        for y in range(H):
+            for x in range(W):
+                if (x-188)**2+(y-30)**2<=15*15 and dither(x,y): g[(x,y)]=C
     for x in range(W):
         top=H-ridge(back,x)
         for y in range(top,H):
@@ -146,7 +163,7 @@ def waves():
             g[(x,y)]=P if onarc else (B if i<2 else D)
     return W,H,g
 
-def cloud_sea():
+def cloud_sea(fill=P, edge=K):
     """Tileable 祥云 bank: cream puffs over transparent sky, solid cream base (= paper section)."""
     W,H=80,30
     g={}
@@ -163,8 +180,7 @@ def cloud_sea():
         for y in range(top,H): inside.add((x,y))
     for x,y in inside:
         top_edge=(x,y-1) not in inside
-        g[(x,y)]=P
-        if top_edge: g[(x,y)]=K
+        g[(x,y)]=edge if top_edge else fill
     # curls on the larger puffs
     curl=[".BBBB.","B....B","B.BB.B","B.B..B","B..BB.",".B...."]
     for cx,cy,r in puffs:
@@ -173,7 +189,7 @@ def cloud_sea():
 
 def emit(name,W,H,g):
     ps=paths(g)
-    order=[L,C,B,D,K,P]
+    order=[N,L,C,B,D,K,P]
     body="".join(f'<path fill="{c}" d="{ps[c]}"/>' for c in order if c in ps)
     return name,W,H,body
 
@@ -185,6 +201,8 @@ if __name__=="__main__":
         "mountains":mountains(),
         "mountain-clouds":clouds_layer([(40,52,[(0,0,6),(7,-3,7),(15,0,5)]),(150,44,[(0,0,5),(6,-3,6),(13,0,4)]),(282,58,[(0,0,5),(7,-2,6),(14,1,4)])],320,100),
         "cloud-sea":cloud_sea(),
+        "mountains-night":mountains(night=True),
+        "cloud-sea-night":cloud_sea(fill=N, edge=P),
         "lantern":(9,14,sprite(LANTERN,{"K":K,"C":C,"P":P})),
         "koi":(18,9,sprite(KOI,{"K":K,"C":C,"P":P})),
         "waves":waves(),

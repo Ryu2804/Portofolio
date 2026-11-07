@@ -90,6 +90,53 @@ html {
   scroll-behavior: smooth;
 }
 
+/* ---- Night theme: dusk (18:00) to dawn (06:00), set on <html data-time> in app/layout.tsx.
+   Paper becomes an ink night sky; blue sections, sea and lacquer stay as they are. ---- */
+:root[data-time="night"] {
+  --color-background: #2b2121;
+  --color-surface: #2b2121;
+  --color-surface-bright: #3d3030;
+  --color-surface-dim: #241b1b;
+  --color-surface-lowest: #3d3030;
+  --color-surface-low: #332727;
+  --color-surface-container-low: #332727;
+  --color-surface-container: #3a2d2d;
+  --color-surface-high: #443636;
+  --color-surface-container-high: #443636;
+  --color-surface-highest: #4e3f3f;
+  --color-surface-container-highest: #4e3f3f;
+  --color-surface-variant: #4e3f3f;
+  --color-on-background: #f5ebdd;
+  --color-on-surface: #f5ebdd;
+  --color-on-surface-variant: #d7c0a2;
+  --color-tertiary: #f7a592;
+  --color-inverse-surface: #241b1b;
+  --color-outline-variant: #554545;
+}
+/* blue text is too dark on the night sky: lift it to the mist tint */
+:root[data-time="night"] .text-primary {
+  color: #9fb2c8;
+}
+/* title: moonlit cream face, lacquer depth, porcelain base */
+:root[data-time="night"] .arcade-title {
+  color: #f5ebdd;
+  text-shadow:
+    0.0175em 0.0175em 0 #f2765e,
+    0.035em 0.035em 0 #f2765e,
+    0.0525em 0.0525em 0 #f2765e,
+    0.07em 0.07em 0 #f2765e,
+    0.0875em 0.0875em 0 #315b8c,
+    0.105em 0.105em 0 #315b8c;
+}
+:root[data-time="night"] .day-only,
+:root:not([data-time="night"]) .night-only,
+:root[data-time="night"] .flock {
+  display: none; /* moon and stars swap in; birds sleep */
+}
+:root[data-time="night"] .cloud-sea {
+  background-image: url("/scenery/cloud-sea-night.svg");
+}
+
 body {
   background: var(--color-inverse-surface);
   color: var(--color-on-surface);
