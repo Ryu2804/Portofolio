@@ -14,6 +14,16 @@ const ROLES = [
 export function HeroStage() {
   const [ryz, setRyz] = useState(false);
   const [roleIndex, setRoleIndex] = useState(0);
+  const [released, setReleased] = useState<{ id: number; x: number; y: number }[]>([]);
+
+  // Click/tap open sky: a sky lantern rises from that spot
+  function releaseLantern(e: React.MouseEvent<HTMLElement>) {
+    if ((e.target as HTMLElement).closest("button, a")) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const box = e.currentTarget.getBoundingClientRect();
+    const lantern = { id: e.timeStamp, x: e.clientX - box.left, y: e.clientY - box.top };
+    setReleased((list) => [...list.slice(-7), lantern]); // at most 8 in the air
+  }
 
   const todayLabel = new Date().toLocaleDateString("en-GB", {
     weekday: "long",
@@ -41,7 +51,22 @@ export function HeroStage() {
 
 
   return (
-    <section className="relative flex min-h-[calc(100svh-5rem)] w-full flex-col items-center justify-center overflow-hidden px-4 pt-10 pb-[max(120px,9.5vw)] lg:px-8">
+    <section
+      onClick={releaseLantern}
+      className="relative flex min-h-[calc(100svh-5rem)] w-full flex-col items-center justify-center overflow-hidden px-4 pt-10 pb-[max(120px,9.5vw)] lg:px-8"
+    >
+      {released.map((l) => (
+        // eslint-disable-next-line @next/next/no-img-element -- tiny pixel sprite
+        <img
+          key={l.id}
+          src="/scenery/lantern.svg"
+          alt=""
+          aria-hidden="true"
+          className="released-lantern pixelated pointer-events-none absolute z-20 h-[56px] w-9"
+          style={{ left: l.x - 18, top: l.y - 28 }}
+          onAnimationEnd={() => setReleased((list) => list.filter((x) => x.id !== l.id))}
+        />
+      ))}
       {/* banners carry the Chinese name 馬福隆 on both sides */}
       <Couplet side="right" text="馬福隆" />
       <Couplet side="left" text="馬福隆" />
@@ -99,7 +124,7 @@ export function HeroStage() {
 function Couplet({ side, text }: { side: "left" | "right"; text: string }) {
   return (
     <div
-      className={`pointer-events-none absolute top-0 z-0 hidden flex-col items-center md:flex ${side === "left" ? "left-[4%] lg:left-[7%]" : "right-[4%] lg:right-[7%]"}`}
+      className={`couplet-hang absolute top-0 z-0 hidden flex-col items-center md:flex ${side === "left" ? "left-[4%] lg:left-[7%]" : "right-[4%] lg:right-[7%]"}`}
       aria-hidden="true"
     >
       <div className="couplet-cord h-10 lg:h-16" />

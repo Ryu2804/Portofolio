@@ -1,5 +1,3 @@
-/* eslint-disable @next/next/no-img-element -- tiny local SVG logos */
-
 // Logos: Simple Icons (CC0), saved in cream to public/stack/<slug>.svg
 const FIELDS = [
   {
@@ -44,9 +42,16 @@ function Row({ hidden }: { hidden?: boolean }) {
         <li key={f.field} className="flex items-center">
           <ul className="flex items-center gap-10 md:gap-14" aria-label={hidden ? undefined : f.field}>
             {f.tools.map((t) => (
-              <li key={t.slug} className="flex items-center gap-3 whitespace-nowrap md:gap-4">
-                <img src={`/stack/${t.slug}.svg`} alt="" className="h-9 w-9 md:h-12 md:w-12" />
-                <span className="font-body text-lg font-bold text-on-primary md:text-2xl">{t.name}</span>
+              <li key={t.slug} className="group flex items-center gap-3 whitespace-nowrap md:gap-4">
+                {/* logo shape as a mask, so its colour can change on hover */}
+                <span
+                  aria-hidden="true"
+                  className="stack-logo h-9 w-9 bg-on-primary transition duration-200 group-hover:-translate-y-1.5 group-hover:scale-125 group-hover:bg-secondary md:h-12 md:w-12"
+                  style={{ "--logo": `url(/stack/${t.slug}.svg)` } as React.CSSProperties}
+                />
+                <span className="font-body text-lg font-bold text-on-primary transition-colors duration-200 group-hover:text-secondary md:text-2xl">
+                  {t.name}
+                </span>
               </li>
             ))}
           </ul>
